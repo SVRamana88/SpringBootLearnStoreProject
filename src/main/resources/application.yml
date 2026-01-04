@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Learn
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/store
+    username: postgres
+    password: "0000"
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#    Dialect is must
