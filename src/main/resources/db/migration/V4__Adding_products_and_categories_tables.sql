@@ -1,0 +1,17 @@
+CREATE TABLE categories
+(
+    id   SMALLINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE products
+(
+    id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name        VARCHAR(250)   NOT NULL,
+    price       NUMERIC(10, 2) NOT NULL CHECK (price >= 0),
+    category_id SMALLINT       NOT NULL,
+    --CONSTRAINT fk_products_category THIS IS OPTIONAL USEFULL WHILE ALTERING TABLE OR CONTRAINSTS
+    FOREIGN KEY (category_id)
+        REFERENCES categories (id)
+        ON DELETE RESTRICT
+);
