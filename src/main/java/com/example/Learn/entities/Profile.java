@@ -3,6 +3,7 @@ package com.example.Learn.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -25,4 +26,11 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private int loyaltyPoints;
+
+    @OneToOne()
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user;
+
+    //revist this @MapId one to one mapping pending
 }

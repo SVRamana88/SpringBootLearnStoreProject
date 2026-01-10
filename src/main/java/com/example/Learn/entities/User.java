@@ -64,6 +64,18 @@ public class User {
         tagObject.setUsers(null);
     }
 
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
+    public void addProfile(Profile profile) {
+        this.profile = profile;
+        profile.setUser(this);
+    }
+
+    public void removeProfile(Profile profile) {
+        profile.setUser(null);
+        this.profile = null;
+    }
 }
 //
 //
