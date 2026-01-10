@@ -3,11 +3,15 @@ package com.example.Learn.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @Entity
 @Table(name = "users")
 public class User {
@@ -25,6 +29,19 @@ public class User {
     @Column(nullable = false, name = "password_hash")
     private String password;
 
+    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    List<Address> addresses = new ArrayList<>();
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address) {
+        addresses.remove(address);
+        address.setUser(null);
+    }
 }
 //
 //

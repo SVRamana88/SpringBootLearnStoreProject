@@ -1,11 +1,14 @@
 package com.example.Learn.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 @Entity
 @Table(name = "addresses")
 public class Address {
@@ -25,5 +28,10 @@ public class Address {
 
     @Column(name = "pincode")
     private String pincode;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private User user;
 }
 //NULLABLE FALSE IS NOT NEED SINCE THIS DB FIRST APPROACH
