@@ -8,26 +8,23 @@ import com.example.Learn.entities.User;
 @SpringBootApplication
 public class LearnApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LearnApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(LearnApplication.class, args);
 
-		var user = User.builder()
-				.name("Venkat")
-				.password("0000")
-				.email("VR@gmail.com")
-				.build();
+//        var user = User.builder()
+//                .name("Venkat")
+//                .password("0000")
+//                .email("VR@gmail.com")
+//                .build();
 
-		var address = Address.builder()
-				.street("SSR Colony")
-				.village("Vedireswarm")
-				.state("AP")
-				.pincode("533238")
-				.build();
+        var user = new User();
+        user.setName("Venkat");
+        user.setEmail("VR@gmail.com");
+        user.setPassword("0000");
+        user.addTag("Leaner");
 
-		user.addAddress(address);
+        System.out.println(user.toString());
 
-		System.out.println(user.toString());
-
-	}
+    }
 
 }
