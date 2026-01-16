@@ -4,6 +4,7 @@ import com.example.Learn.entities.Address;
 import com.example.Learn.entities.Profile;
 import com.example.Learn.repositories.ProfileRepository;
 import com.example.Learn.repositories.UserRepository;
+import com.example.Learn.services.ProductService;
 import com.example.Learn.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,8 +19,8 @@ public class LearnApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(LearnApplication.class, args);
 
-        var userService = context.getBean(UserService.class);
-        userService.deleteRelated();
+        var productService = context.getBean(ProductService.class);
+        productService.deleteProduct();
 
     }
 

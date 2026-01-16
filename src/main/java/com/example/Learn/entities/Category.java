@@ -1,8 +1,7 @@
 package com.example.Learn.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +9,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "categories")
 public class Category {
     @Id
@@ -21,5 +23,6 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
+    @Builder.Default
     private Set<Product> products = new HashSet<>();
 }
