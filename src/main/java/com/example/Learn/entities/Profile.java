@@ -1,14 +1,16 @@
 package com.example.Learn.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "profiles")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +24,7 @@ public class Profile {
     private String phoneNumber;
 
     @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Column(name = "loyalty_points")
     private int loyaltyPoints;

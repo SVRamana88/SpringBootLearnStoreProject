@@ -47,9 +47,9 @@ public class User {
 
     @ManyToMany()
     @JoinTable(
-            name = "users_tags",
+            name = "user_tags",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "tags_id")
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private Set<Tag> tags = new HashSet<>();
 
