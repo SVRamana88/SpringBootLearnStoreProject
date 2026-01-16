@@ -17,6 +17,15 @@ public class LearnApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(LearnApplication.class, args);
+
+        var userService = context.getBean(UserService.class);
+        userService.deleteRelated();
+
+    }
+
+}
+
+
 //
 //        var repository = context.getBean(UserRepository.class);
 //        var profileRepository = context.getBean(ProfileRepository.class);
@@ -47,11 +56,3 @@ public class LearnApplication {
 //        repository.findAll().forEach(user -> System.out.println(user.getName()));
 
 //        repository.deleteById(1);
-
-        var userService = context.getBean(UserService.class);
-        userService.getAddressEntity();
-
-
-    }
-
-}

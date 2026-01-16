@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Builder
+@Builder
 @ToString
 @Entity
 @Table(name = "users")
@@ -31,8 +31,10 @@ public class User {
     @Column(nullable = false, name = "password_hash")
     private String password;
 
-    @OneToMany(mappedBy = "user")
-//    @Builder.Default
+    //2 scnerios delete and orphan
+    //@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})  if cascade remove on there on table check v1 migration
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @Builder.Default
     List<Address> addresses = new ArrayList<>();
 
     public void addAddress(Address address) {
@@ -64,7 +66,7 @@ public class User {
         tagObject.setUsers(null);
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
     public void addProfile(Profile profile) {
