@@ -19,9 +19,12 @@ public class LearnApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(LearnApplication.class, args);
 
-        var productService = context.getBean(ProductService.class);
-        var products = productService.getProducts();
-        products.forEach(System.out::println);
+//        var productService = context.getBean(ProductService.class);
+//        var products = productService.getProducts();
+//        products.forEach(System.out::println);
+
+        var userService = context.getBean(UserService.class);
+        userService.fetchUser();
 
     }
 

@@ -69,4 +69,8 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void fetchUser() {
+        var user = userRepository.findUserByEmail("rr").orElseThrow();
+        System.out.println(user);
+    }
 }
