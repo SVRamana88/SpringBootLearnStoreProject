@@ -1,5 +1,7 @@
 package com.example.Learn.services;
 
+import com.example.Learn.dtos.ProductSummary;
+import com.example.Learn.dtos.ProductSummaryDTO;
 import com.example.Learn.entities.Category;
 import com.example.Learn.entities.Product;
 import com.example.Learn.repositories.CategoryRepository;
@@ -9,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -34,5 +37,9 @@ public class ProductService {
     public void deleteProduct() {
         Product product = productRepository.findById(1).orElseThrow();
         productRepository.delete(product);
+    }
+
+    public List<ProductSummaryDTO> getProducts() {
+        return productRepository.getProductsByName("criket");
     }
 }

@@ -20,7 +20,8 @@ public class LearnApplication {
         ApplicationContext context = SpringApplication.run(LearnApplication.class, args);
 
         var productService = context.getBean(ProductService.class);
-        productService.deleteProduct();
+        var products = productService.getProducts();
+        products.forEach(System.out::println);
 
     }
 
