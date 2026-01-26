@@ -73,4 +73,13 @@ public class UserService {
         var user = userRepository.findUserByEmail("rr").orElseThrow();
         System.out.println(user);
     }
+
+    @Transactional
+    public void fetchUsers() {
+        var user = userRepository.findUserWithAddresses();
+        user.forEach(u -> {
+            System.out.println(u);
+            System.out.println(u.getAddresses());
+        });
+    }
 }

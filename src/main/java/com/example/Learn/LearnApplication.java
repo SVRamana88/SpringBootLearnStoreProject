@@ -24,7 +24,7 @@ public class LearnApplication {
 //        products.forEach(System.out::println);
 
         var userService = context.getBean(UserService.class);
-        userService.fetchUser();
+        userService.fetchUsers();
 
     }
 
