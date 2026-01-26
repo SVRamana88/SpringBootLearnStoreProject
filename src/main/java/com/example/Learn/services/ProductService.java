@@ -42,4 +42,8 @@ public class ProductService {
     public List<ProductSummaryDTO> getProducts() {
         return productRepository.getProductsByName("criket");
     }
+
+    public List<Product> getProductsWithStoringProcedures() {
+        return productRepository.findProductsWithStoringProcedure(BigDecimal.valueOf(1), BigDecimal.valueOf(10000));
+    }
 }

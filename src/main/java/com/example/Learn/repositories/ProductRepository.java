@@ -4,9 +4,11 @@ import com.example.Learn.dtos.ProductSummary;
 import com.example.Learn.dtos.ProductSummaryDTO;
 import com.example.Learn.entities.Product;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Product, Integer> {
@@ -20,5 +22,9 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     @Query("SELECT new com.example.Learn.dtos.ProductSummaryDTO(p.name, p.price) FROM Product p WHERE p.name = :name")
     List<ProductSummaryDTO> getProductsByName(@Param("name") String name);
+
+    @Query(value = "SELECT * FROM public.find_products_by_price(:minPrice, :maxPrice)", nativeQuery = true)
+    List<Product> findProductsWithStoringProcedure(@Param("minPrice") BigDecimal minPrice,
+                                                   @Param("maxPrice") BigDecimal maxPrice);
 
 }
